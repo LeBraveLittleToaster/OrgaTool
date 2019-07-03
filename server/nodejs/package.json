@@ -1,10 +1,10 @@
 {
-  "name": "orga_server",
+  "name": "nest_orgatool_server",
   "version": "0.0.1",
-  "description": "Time organize tool",
+  "description": "Nest based server for orga tool",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,13 +12,12 @@
     "url": "git+https://github.com/LeBraveLittleToaster/OrgaTool.git"
   },
   "author": "Pascal Schiessle",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/LeBraveLittleToaster/OrgaTool/issues"
   },
   "homepage": "https://github.com/LeBraveLittleToaster/OrgaTool#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "@nestjs/cli": "^6.5.0"
   }
 }
