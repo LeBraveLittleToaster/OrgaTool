@@ -26,6 +26,10 @@ export class UserService{
         return await this.userModel.deleteAll({loginname:deleteUser.loginname}).exec();
     }
 
+    async findUserByLoginname(loginname: string): Promise<User> {
+        return await this.userModel.findOne({loginname: loginname}).exec();
+    }
+
     async findAll(): Promise<User[]> {
         return await this.userModel.find().exec();
     }
