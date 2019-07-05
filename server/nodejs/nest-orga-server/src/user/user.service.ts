@@ -1,11 +1,13 @@
 import { Model } from 'mongoose';
-import { Injectable, Inject, UseGuards } from '@nestjs/common';
+import { Injectable, Inject, UseGuards, RequestTimeoutException } from '@nestjs/common';
 import { User } from './interfaces/user.interface';
 import { CreateUserDto } from './dto/create-user.dto';
 import { DeleteUserDto } from './dto/delete-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import {TokenGenerator, TokenBase } from 'ts-token-generator';
 var hash = require('hash.js');
+
 
 @Injectable()
 @UseGuards(AuthGuard())
@@ -14,7 +16,10 @@ export class UserService{
     constructor(@Inject('USER_MODEL') private readonly userModel: Model<User>){}
 
     generateBearerToken(loginname: string, pw: string): string | Promise<string> {
-        throw new Error("Method not implemented.");
+        const tokgen = new TokenGenerator({ bitSize: 512, baseEncoding: TokenBase.BASE62 });
+        const token = tokgen.generate();
+        //TODO: set token onto user
+        return token;
     }
 
     async create(createUserDto: CreateUserDto): Promise<User>{
